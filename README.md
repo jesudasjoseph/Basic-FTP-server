@@ -1,2 +1,2 @@
-# Basic-FTP-server
+# basic-ftp-server
 A basic FTP Server.
