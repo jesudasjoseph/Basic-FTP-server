@@ -2,7 +2,7 @@
 # Author: Jesudas Joseph
 # Project Name: Simple File Transfer
 # Description: Transfer a file between a server and client with client commands. Also list contents of server directory on client request.
-# Collaboration: I discussed this project with Hunter Land another student in CS-372.
+// Collaboration: I discussed this project with Hunter Land another student in CS-372.
 
 A basic file-transfer-Server.
 
