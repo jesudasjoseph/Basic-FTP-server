@@ -7,31 +7,23 @@ Collaboration: I discussed this project with Hunter Land another student in CS-3
 
 # basic-file-transfer-server
 
-A basic file-transfer-Server.
+This project is a basic file transfer server and client. The server is coded in c and the client is coded in python2.
 
-References:
-
-python reference pages
-linux man pages
-
+# Compiling
 
 --compile ftserver with this command:
 gcc -std=gnu99 -o ftserver ftserver.c iio.c
 
---run ftserver:
-./ftserver <PORTNUM>
-
-
 --compile ftclient:
 No need to compile.
 
---give ftclient.py execute permissions.
-chmod +x ftclient.py
+# Running
 
---run ftclient.py
-./ftclient.py <SERVER_ADDRESS> <SERVER_PORT> <DATA_PORT> <COMMAND> [FILENAME]
+ftclient.py <SERVER_ADDRESS> <SERVER_PORT> <DATA_PORT> <COMMAND> [FILENAME]
 
     --possible commands:
 
 Copy File:      -g <FILENAME>
 List:           -l
+
+./ftserver <PORTNUM>
