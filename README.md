@@ -16,13 +16,15 @@ ftserver:
 	gcc -std=gnu99 -o ftserver ftserver.c iio.c
 
 # Running
-Run Client:
+Client:
 
-	ftclient.py <SERVER_ADDRESS> <SERVER_PORT> <DATA_PORT> <COMMAND> [FILENAME]
+	ftclient.py <SERVER_ADDRESS> <SERVER_PORT> <DATA_PORT> <FLAGS>
 
-Copy File:      -g <FILENAME>
-List:           -l
+Flags:
 
-Run Server:
+	copy file: 	-g <FILENAME>
+	list:		-l
+
+Server:
 
 	./ftserver <PORTNUM>
