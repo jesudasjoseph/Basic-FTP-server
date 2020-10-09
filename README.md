@@ -12,14 +12,17 @@ This project is a basic file transfer server and client. The server is coded in 
 # Compiling
 
 ftserver:
+
 	gcc -std=gnu99 -o ftserver ftserver.c iio.c
 
 # Running
 Run Client:
+
 	ftclient.py <SERVER_ADDRESS> <SERVER_PORT> <DATA_PORT> <COMMAND> [FILENAME]
 
 Copy File:      -g <FILENAME>
 List:           -l
 
 Run Server:
+
 	./ftserver <PORTNUM>
