@@ -22,8 +22,8 @@ This project is a basic file transfer server and client. The server is coded in 
 
 |Flag|Use|
 |--|--|
-|-g \<FILENAME>|safasfsa|
-|-l|asdsafa|
+|-g \<FILENAME>|Transfer File with \<FILENAME> |
+|-l|List contents of server directory|
 
  ### Server:
 
