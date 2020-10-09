@@ -20,8 +20,8 @@ This project is a basic file transfer server and client. The server is coded in 
 >
 >	ftclient.py <SERVER_ADDRESS> <SERVER_PORT> <DATA_PORT> <FLAGS>
 >>	#### Flags:
->>	copy file: 	-g <FILENAME>
->>	list:		-l
+>>	copy file: 	-g <FILENAME></br>
+>>	list:		    -l
 >
 > ### Server:
 >
