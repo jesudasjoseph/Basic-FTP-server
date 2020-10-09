@@ -11,20 +11,19 @@ This project is a basic file transfer server and client. The server is coded in 
 
 ## Compiling
 
-### ftserver:
+> ### ftserver:
 
-	gcc -std=gnu99 -o ftserver ftserver.c iio.c
+>	gcc -std=gnu99 -o ftserver ftserver.c iio.c
 
 ## Running
-###Client:
+> ### Client:
+>
+>	ftclient.py <SERVER_ADDRESS> <SERVER_PORT> <DATA_PORT> <FLAGS>
+>
+>	#### Flags:
+>	copy file: 	-g <FILENAME>
+>	list:		-l
 
-	ftclient.py <SERVER_ADDRESS> <SERVER_PORT> <DATA_PORT> <FLAGS>
-
-#### Flags:
-
-	copy file: 	-g <FILENAME>
-	list:		-l
-
-### Server:
-
-	./ftserver <PORTNUM>
+> ### Server:
+>
+>	./ftserver <PORTNUM>
