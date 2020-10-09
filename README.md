@@ -11,19 +11,15 @@ This project is a basic file transfer server and client. The server is coded in 
 
 # Compiling
 
---compile ftserver with this command:
-gcc -std=gnu99 -o ftserver ftserver.c iio.c
-
---compile ftclient:
-No need to compile.
+ftserver:
+	gcc -std=gnu99 -o ftserver ftserver.c iio.c
 
 # Running
-
-ftclient.py <SERVER_ADDRESS> <SERVER_PORT> <DATA_PORT> <COMMAND> [FILENAME]
-
-    --possible commands:
+Run Client:
+	ftclient.py <SERVER_ADDRESS> <SERVER_PORT> <DATA_PORT> <COMMAND> [FILENAME]
 
 Copy File:      -g <FILENAME>
 List:           -l
 
-./ftserver <PORTNUM>
+Run Server:
+	./ftserver <PORTNUM>
