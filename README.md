@@ -10,20 +10,19 @@ Collaboration: I discussed this project with Hunter Land another student in CS-3
 This project is a basic file transfer server and client. The server is coded in c and the client is coded in python2.
 
 ## Compiling
-
 > ### ftserver:
-
+>
 >	gcc -std=gnu99 -o ftserver ftserver.c iio.c
+
 
 ## Running
 > ### Client:
 >
 >	ftclient.py <SERVER_ADDRESS> <SERVER_PORT> <DATA_PORT> <FLAGS>
+>>	#### Flags:
+>>	copy file: 	-g <FILENAME>
+>>	list:		-l
 >
->	#### Flags:
->	copy file: 	-g <FILENAME>
->	list:		-l
-
 > ### Server:
 >
 >	./ftserver <PORTNUM>
