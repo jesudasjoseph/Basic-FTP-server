@@ -23,11 +23,12 @@ Description: This is a simple file transfer server. You can transfer any text fi
 //Common packet size between server and client.
 const int32_t def_packet_size = 1024;
 
-//Re-used from my coding in OS1
-/*Takes one line and splits it into individual arguments
+/*
+Takes one line and splits it into individual arguments
 size is optional
 user must free() argsOut
-returns number of argmuments. */
+returns number of argmuments.
+*/
 int split_args(const char *argLine, unsigned int argsMax, char ***argsOut)
 {
     char *line = strdup(argLine);
@@ -76,12 +77,10 @@ int split_args(const char *argLine, unsigned int argsMax, char ***argsOut)
 }
 
 //Check is the provided port is in the correct range.
-int check_port_inrange(char* portnum)
+int check_port_inrange(int portnum)
 {
-    int server_port = -1;
+    int server_port = portnum;
 
-    //convert portnum to int
-    server_port = atoi(portnum);
     //check if the port falls within the valid range of portnums
     if (server_port < 1 || server_port > 65535)
     {
@@ -285,45 +284,66 @@ void run_server(int sockfd)
     }
 }
 
-int main(int argv, char** argc)
+int main(int argc, char *argv[])
 {
     int server_port = 0;
 
-    //check args
-    if (argv < 2)
-    {
-        fprintf(stderr, "ERROR! Too few arguments!\n");
-        exit(-1);
-    }
-    else if (argv > 2)
-    {
-        fprintf(stderr, "ERROR! Too many arguments!\n");
-        exit(-2);
-    }
-    else
-    {
-        server_port = check_port_inrange(argc[1]);
-        if (server_port == -1)
-        {
-            fprintf(stderr, "ERROR! Portnum out of range!\n");
-            exit(-3);
-        }
-        else
-        {
-            int server_socket = socket(AF_INET, SOCK_STREAM, 0);
-            if (try_port_bind(server_socket, server_port) != -1)
-            {
-                //if all checks are past then run the server
-                printf("Successfully bound to port: %d\n", server_port);
-                run_server(server_socket);
-            }
-            else
-            {
-                fprintf(stderr, "ERROR! %s\n", strerror(errno));
-                exit(-4);
-            }
+	const char *optstr = "p:";
+	extern char *optarg;
+	extern int optind, opterr, optopt;
 
+	int option = getopt(argc, argv, optstr);
+	while (option != -1) {
+		switch(option) {
+			case 'p':
+				server_port = atoi(optarg);
+				break;
 
-        }
-    }
+			case '?':
+				printf("Could not recognize command option!\n");
+				exit(-1);
+				break;
+
+			case -1:
+				break;
+		}
+		option = getopt(argc, argv, optstr);
+	}
+
+	if (server_port == 0) {
+
+		printf("No port number provided...\nBinding to random port...\n");
+
+		int server_socket = socket(AF_INET, SOCK_STREAM, 0);
+		server_port = 1080;
+		while (try_port_bind(server_socket, server_port) == -1) {
+			if (server_port > 65535){
+				exit(-1);
+			}
+			server_port ++;
+		}
+		//if all checks are past then run the server
+		printf("Successfully bound to port: %d\n", server_port);
+		run_server(server_socket);
+		exit(0);
+	}
+	else if (check_port_inrange(server_port) == -1) {
+
+		fprintf(stderr, "ERROR! Portnum out of range!\n");
+		exit(-3);
+	}
+	else {
+
+		int server_socket = socket(AF_INET, SOCK_STREAM, 0);
+		if (try_port_bind(server_socket, server_port) != -1) {
+			//if all checks are past then run the server
+			printf("Successfully bound to port: %d\n", server_port);
+			run_server(server_socket);
+		}
+		else {
+
+			fprintf(stderr, "ERROR! %s\n", strerror(errno));
+			exit(-4);
+		}
+	}
 }

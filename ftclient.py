@@ -65,7 +65,6 @@ def recv_packets(sockfd, packet_size):
         pack_head = recv_packet(sockfd, 4)
         actual_packet_size = struct.unpack('!i', pack_head)[0]
 
-#Re-used from my Proj1
 #checks if its possible to bind to port
 #takes: port_number
 #returns:
@@ -81,7 +80,6 @@ def good_port(sockfd, test_port):
         else:
             return -2
 
-#Re-used from my Proj1
 #try to bind port (try_port)
 #returns:
 #True if success
