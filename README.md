@@ -27,4 +27,4 @@ This project is a basic file transfer server and client. The server is coded in 
 
  ### Server:
 
-``./ftserver <PORTNUM>``
+``./ftserver -p <PORTNUM>``
